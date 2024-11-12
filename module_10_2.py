@@ -12,7 +12,13 @@ class Knight(threading.Thread):
         print(f'{self.name}, на нас напали!')
         while enemies:
             counter += 1
-            print(f'{self.name} сражается {counter} дней, осталось {enemies - self.power} воинов.')
+            if counter == 1:
+                syntax = 'день'
+            elif 2 <= counter <= 4:
+                syntax = 'дня'
+            else:
+                syntax = 'дней'
+            print(f'{self.name} сражается {counter} {syntax}, осталось {enemies - self.power} воинов.')
             enemies -= self.power
             time.sleep(1)
         print(f'{self.name} одержал победу спустя {counter} дней!')
